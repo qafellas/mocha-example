@@ -25,7 +25,7 @@ jobs:
 
      - name: Install mocha globally
        run: npm install mocha -g
-       
+
      - name: Install the dependences
        run: npm install
 
@@ -38,5 +38,5 @@ jobs:
        with: 
          name: Mocha Tests
          path: test-results.json
-         eporter: mocha-json
+         reporter: mocha-json
          max-annotations: '30'
