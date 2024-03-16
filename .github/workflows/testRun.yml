@@ -9,6 +9,12 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  id-token: write
+  contents: read
+  checks: write
+  actions: read
+
 jobs:
   mocha-tests:
 
@@ -30,7 +36,7 @@ jobs:
        run: npm install
 
      - name: Run mocha tests
-       run: npm test
+       run: npm run test-json
 
      - name: Test Report
        uses: dorny/test-reporter@v1
