@@ -5,7 +5,8 @@
   "main": "index.js",
   "type":"module",
   "scripts": {
-    "test": "mocha test/scripts"
+    "test": "mocha test/scripts",
+    "test-json": "mocha test/scripts --reporter json --reporter-options output=test-results.json"
   },
   "author": "",
   "license": "ISC",
