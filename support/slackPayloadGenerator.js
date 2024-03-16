@@ -36,7 +36,7 @@ let slackPayload = function () {
         attachment = {
             color: '#008000',
             elements:[],
-            text: `${messageText}:party_blob: Test execution *SUCCEEDED*`,
+            text: `${messageText}:partyblob: Test execution *SUCCEEDED*`,
             ts: Date.now().toString(),
           }
     }
