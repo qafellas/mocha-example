@@ -24,7 +24,7 @@ jobs:
         node-version: '20'
 
      - name: Install mocha globally
-       run: npm install mocha -g
+       run: npm install --global mocha
 
      - name: Install the dependences
        run: npm install
