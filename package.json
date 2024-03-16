@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is a test project",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "mocha test/scripts",
     "test-json": "mocha test/scripts --reporter json --reporter-options output=./test-results.json  --timeout 60000 --exit"
@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^1.6.8",
     "chai": "^5.1.0",
+    "fs": "^0.0.1-security",
     "mocha": "^10.3.0"
   }
 }

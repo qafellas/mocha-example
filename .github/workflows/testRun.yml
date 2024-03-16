@@ -46,3 +46,37 @@ jobs:
          path: test-results.json
          reporter: mocha-json
          max-annotations: '30'
+
+     - name: Read Test Report URL
+       if: always()
+       env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          jobs_url="repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.run_id }}/jobs"
+          json_data=$(gh api $jobs_url)
+          result_url=$(echo $json_data | jq -r '.jobs[] | select(.name == "Mocha Tests") | .html_url')
+          echo "TEST_RUN_HTML=$result_url" | tee -a $GITHUB_ENV
+
+     - name : Create Json report
+       if: always()
+       run: node support/slackPayloadGenerator.js
+
+     - name: Send  JSON report to Slack
+       if: always()
+       id: slack
+       uses: slackapi/slack-github-action@v1.23.0
+       with:
+              payload-file-path: "./jsonReporter.json"
+        env:
+              SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+              SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+
+     - name: Upload Reports
+       uses: actions/upload-artifact@v3
+       if: success() || failure()
+       with:
+         name: test-and-coverage-reports
+         path: |
+              test-results.json
+     
