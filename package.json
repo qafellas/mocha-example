@@ -6,7 +6,7 @@
   "type":"module",
   "scripts": {
     "test": "mocha test/scripts",
-    "test-json": "mocha ./test/scripts/ --reporter json --reporter-options output=./test-results.json  --timeout 60000 --exit"
+    "test-json": "mocha test/scripts --reporter json --reporter-options output=./test-results.json  --timeout 60000 --exit"
   },
   "author": "",
   "license": "ISC",
