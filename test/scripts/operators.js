@@ -10,7 +10,7 @@ describe('Operator Tests', ()=>{
     })
 
     it('should expect correct division', ()=>{
-        expect(18/9).to.equal(2)
+        expect(18/9).to.equal(23)
     })
 
     it('should expect correct subtraction', ()=>{
