@@ -6,7 +6,7 @@
   "type":"module",
   "scripts": {
     "test": "mocha test/scripts",
-    "test-json": "npx mocha test/scripts --reporter json --reporter-options output=test-results.json"
+    "test-json": "mocha ./test/scripts/ --reporter json --reporter-options output=test-results.json"
   },
   "author": "",
   "license": "ISC",
