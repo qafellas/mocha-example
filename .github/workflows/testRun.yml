@@ -34,6 +34,6 @@ jobs:
        if: success() || failure()
        with: 
          name: Mocha Tests
-         path: test-result.json
+         path: test-results.json
          eporter: mocha-json
          max-annotations: '30'
