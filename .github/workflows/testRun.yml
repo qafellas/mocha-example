@@ -40,6 +40,7 @@ jobs:
         run: npm run test-json
 
       - name: Test Report
+        id: test_report
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with: 
@@ -53,10 +54,10 @@ jobs:
         env:
          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          jobs_url="repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.run_id }}/jobs"
-          json_data=$(gh api $jobs_url)
-          result_url=$(echo $json_data | jq -r '.jobs[] | select(.name == "Mocha Tests") | .html_url')
-          echo "TEST_RUN_HTML=$result_url" | tee -a $GITHUB_ENV
+            echo "Available outputs:"
+            echo "${{ toJSON(steps.test_report.outputs) }}"
+            echo "Check run URL: ${{ steps.test_report.outputs.url }}"
+            echo "TEST_RUN_HTML=${{ steps.test_report.outputs.url_html }}" | tee -a $GITHUB_ENV
 
       - name : Create Json report
         if: always()
